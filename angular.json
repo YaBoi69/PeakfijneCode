@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "geochatting": {
+    "project-ewa": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/geochatting",
+            "outputPath": "dist/project-ewa",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,9 +24,16 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/materialize-css/dist/css/materialize.min.css",
+              "node_modules/leaflet/dist/leaflet.css",
+              "node_modules/material-icons/iconfont/material-icons.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/materialize-css/dist/js/materialize.js",
+              "node_modules/leaflet/dist/leaflet.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -63,18 +70,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "geochatting:build"
+            "browserTarget": "project-ewa:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "geochatting:build:production"
+              "browserTarget": "project-ewa:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "geochatting:build"
+            "browserTarget": "project-ewa:build"
           }
         },
         "test": {
@@ -111,15 +118,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "geochatting:serve"
+            "devServerTarget": "project-ewa:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "geochatting:serve:production"
+              "devServerTarget": "project-ewa:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "geochatting"
+  "defaultProject": "project-ewa"
 }
