@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 declare let L;
+declare let M;
 
 @Component({
   selector: 'app-mainpage',
@@ -8,6 +9,9 @@ declare let L;
   styleUrls: ['./mainpage.component.css']
 })
 export class MainpageComponent implements OnInit {
+  readonly UNABLE_TO_GET_PRECISE_LOCATION = "Unable to get precise location. Location may not be accurate.";
+  readonly INACCURATE_START_RADIUS = 15;
+  readonly TOAST_DURATION = 10000;
   private circle: any;
   private markers: any[];
   private map: any;
@@ -55,6 +59,17 @@ export class MainpageComponent implements OnInit {
 
       // L.marker(e.latlng).addTo(map)
       //     .bindPopup("You are within " + radius + " meters from this point").openPopup();
+
+      // Let the user know the location may be inaccurate
+      if (radius > this.INACCURATE_START_RADIUS) {
+        M.toast({
+          html: this.UNABLE_TO_GET_PRECISE_LOCATION,
+          displayLength: this.TOAST_DURATION,
+          classes: 'centered-toast'
+        });
+
+        radius = this.INACCURATE_START_RADIUS; // Disallow the circle to be too big
+      }
 
       if (this.circle === undefined) {
         this.circle = new L.circle(e.latlng, radius).addTo(this.map);
