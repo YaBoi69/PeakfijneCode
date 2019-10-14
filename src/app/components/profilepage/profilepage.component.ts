@@ -1,6 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
-import $ = require('jquery');
+// import $ = require('jquery');
+
+declare var $: any;
 
 @Component({
   selector: 'app-profilepage',
@@ -10,11 +12,13 @@ import $ = require('jquery');
 export class ProfilepageComponent implements OnInit {
   @ViewChild('profileForm', {static: false}) private profileForm: NgForm;
   isReadOnly: boolean;
+  private nickName: string;
 
   constructor() {
   }
 
   ngOnInit() {
+    this.nickName = "Niels";
     this.isReadOnly = true;
     $('.modal').modal();
   }

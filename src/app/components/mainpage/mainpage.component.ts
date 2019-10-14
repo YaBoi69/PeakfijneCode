@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
+// import * as $ from 'jquery';
 
 declare let L;
 declare let M;
+declare var $: any;
 
 @Component({
   selector: 'app-mainpage',
@@ -26,6 +28,17 @@ export class MainpageComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    // $('.sidenav').sidenav();
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.sidenav');
+      var instances = M.Sidenav.init(elems, {});
+    });
+
+    $('.modal').modal();
+    $('.tabs').tabs();
+
     const DEFAULT_LAT = 52.36015051507675;
     const DEFAULT_LONG = 4.908598859032622;
     const DEFAULT_ZOOM_LEVEL = 16;
@@ -46,12 +59,12 @@ export class MainpageComponent implements OnInit {
 
     for (let marker of this.markers) {
       console.log(marker);
-      marker.addTo(this.map).on('click', () => {
+      marker.addTo(this.map).addEventListener('click', () => {
         console.log('test');
       });
     }
 
-    this.map.on('locationfound', (e) => {
+    this.map.addEventListener('locationfound', (e) => {
       let radius = e.accuracy;
 
       console.log(e);
@@ -62,11 +75,11 @@ export class MainpageComponent implements OnInit {
 
       // Let the user know the location may be inaccurate
       if (radius > this.INACCURATE_START_RADIUS) {
-        M.toast({
-          html: this.UNABLE_TO_GET_PRECISE_LOCATION,
-          displayLength: this.TOAST_DURATION,
-          classes: 'centered-toast'
-        });
+        // M.toast({
+        //   html: this.UNABLE_TO_GET_PRECISE_LOCATION,
+        //   displayLength: this.TOAST_DURATION,
+        //   classes: 'centered-toast'
+        // });
 
         radius = this.INACCURATE_START_RADIUS; // Disallow the circle to be too big
       }

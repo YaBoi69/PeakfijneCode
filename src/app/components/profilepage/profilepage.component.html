@@ -1,6 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="image-container responsive-img image"></div>
+    <h5>My profile - {{nickName}}</h5>
+    <!--    <div class="image-container responsive-img image"></div>-->
+    <span>Edit my details</span>
     <div class="switch right">
       <label>
         Off
@@ -14,7 +16,8 @@
   <form ngNativeValidate name="profile" class="col s12">
     <div class="row">
       <div class="input-field col s12">
-        <input id="nickname" name="nickname" type="text" value="Niels" [readonly]="isReadOnly" required minlength="3">
+        <input id="nickname" name="nickname" type="text" value="{{nickName}}" [readonly]="isReadOnly" required
+               minlength="3">
         <label for="nickname" class="active">Nickname</label>
       </div>
     </div>

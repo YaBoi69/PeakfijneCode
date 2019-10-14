@@ -1,0 +1,51 @@
+<div class="container" style="margin-top: 50px">
+  <div class="row">
+    <span>Delay for publishing an user's message</span>
+  </div>
+  <!-- edited text field -->
+  <div class="row">
+    <div class="input-field">
+      <input value="10" id="minutes" type="text" class="validate">
+      <label class="active" for="minutes">minutes</label>
+    </div>
+  </div>
+
+  <div class="row">
+    <span>Duration of a message</span>
+  </div>
+
+  <!-- edited text field -->
+  <div class="row">
+    <div class="input-field">
+      <input value="10" id="days" type="text" class="validate">
+      <label class="active" for="days">Days</label>
+    </div>
+  </div>
+
+  <div class="row">
+  <span>The amount of minutes one is allowed to see a message after seeing
+        it for the first time</span>
+  </div>
+
+  <!-- edited text field -->
+  <div class="row">
+    <div class="input-field">
+      <input value="10" id="minutes1" type="text" class="validate">
+      <label class="active" for="minutes1">minutes</label>
+    </div>
+  </div>
+
+  <!-- buttons -->
+  <a style="margin: 50px" routerLink="/" class="btn-flat waves-effect waves-light btn-large"><i
+    class="material-icons"></i>Discard changes</a>
+  <a class="waves-effect waves-light btn-large waves-effect waves-light btn modal-trigger"><i
+    class="material-icons" routerLink="/"></i>Save Changes</a>
+</div>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <h5>Are you sure you want to save these Changes?</h5>
+    <a class="waves-effect waves-light btn-large"><i class="material-icons left"></i>Yes</a>
+  </div>
+</div>
