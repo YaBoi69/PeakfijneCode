@@ -6,6 +6,7 @@ import {AppComponent} from './app.component';
 import {MainpageComponent} from './components/mainpage/mainpage.component';
 import {ProfilepageComponent} from './components/profilepage/profilepage.component';
 import { SettingspageComponent } from './components/admin/settingspage/settingspage.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SettingspageComponent } from './components/admin/settingspage/settingsp
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

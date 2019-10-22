@@ -107,3 +107,6 @@ i.medium {
 .btn-previous-page {
   padding: 15px 7px 0 7px;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
