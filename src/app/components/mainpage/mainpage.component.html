@@ -1,47 +1,44 @@
 <div id="map"></div>
 
 <div class="btn-group vertical btn-fixed btn-top-right">
-  <a class="btn-large waves-effect waves-ligh modal-trigger" data-target="signin">
-    Sign in
-  </a>
-  <a routerLink="/profile" class="btn-floating btn-flat btn-large waves-effect waves-light">
-    <i class="large material-icons medium z-depth-4 grey-text text-lighten-5">account_circle</i>
+  <!--  <a class="btn-large waves-effect waves-ligh modal-trigger" data-target="signin">-->
+  <!--    Sign in-->
+  <!--  </a>-->
+  <button mat-raised-button>Sign in</button>
+  <a routerLink="/profile" mat-fab color="primary">
+    <i class="large material-icons">account_circle</i>
   </a>
 </div>
 
-<a class="btn-floating btn-flat  btn-fixed btn-top-left btn-large waves-effect waves-light sidenav-trigger"
-   data-target="slide-out">
-  <i class="large material-icons medium z-depth-4 grey-text text-lighten-5">menu</i>
-</a>
+<div class="btn-group vertical btn-fixed btn-top-left">
+  <button mat-icon-button>
+    <mat-icon>menu</mat-icon>
+  </button>
+</div>
+
+<!--<a class="btn-floating btn-flat  btn-fixed btn-top-left btn-large waves-effect waves-light sidenav-trigger"-->
+<!--   data-target="slide-out">-->
+<!--  <i class="large material-icons medium z-depth-4 grey-text text-lighten-5">menu</i>-->
+<!--</a>-->
 
 <!--<nav> &lt;!&ndash; navbar content here  &ndash;&gt; </nav>-->
 
-<ul id="slide-out" class="sidenav">
-  <li><a class="subheader">Administrator</a></li>
-  <li><a class="waves-effect" href="#!">Messages</a></li>
-  <li><a class="waves-effect" href="#!">Reports</a></li>
-  <li><a class="waves-effect" href="#!">Users</a></li>
-  <li><a class="waves-effect" routerLink="/admin/settings">Settings</a></li>
-</ul>
+<!--<ul id="slide-out" class="sidenav">-->
+<!--  <li><a class="subheader">Administrator</a></li>-->
+<!--  <li><a class="waves-effect" href="#!">Messages</a></li>-->
+<!--  <li><a class="waves-effect" href="#!">Reports</a></li>-->
+<!--  <li><a class="waves-effect" href="#!">Users</a></li>-->
+<!--  <li><a class="waves-effect" routerLink="/admin/settings">Settings</a></li>-->
+<!--</ul>-->
 <!--<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>-->
 
-
-<!--<nav> &lt;!&ndash; navbar content here  &ndash;&gt; </nav>-->
-<!--<ul id="slide-out" class="sidenav">-->
-<!--  <li><a class="waves-effect" href="#!">First Link</a></li>-->
-<!--  <li><a class="waves-effect" href="#!">Second Link</a></li>-->
-<!--  <li><a class="waves-effect" href="#!">Third Link</a></li>-->
-<!--  <li><a class="waves-effect" href="#!">Fourth Link</a></li>-->
-<!--  <li><a class="waves-effect" href="#!">Fifth Link</a></li>-->
-<!--</ul>-->
-
 <div class="btn-group btn-fixed btn-bottom-right">
-  <a class="btn-floating btn-large waves-effect waves-light">
+  <button mat-fab color="primary">
     <i class="large material-icons">info_outline</i>
-  </a>
-  <a class="btn-floating btn-large waves-effect waves-light modal-trigger" data-target="message">
+  </button>
+  <button mat-fab color="primary">
     <i class="large material-icons">message</i>
-  </a>
+  </button>
 </div>
 
 <div id="message" class="modal">
