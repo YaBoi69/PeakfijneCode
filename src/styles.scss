@@ -8,7 +8,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   --btn-group-item-space: 10px;
   --ui-elements-z-index: 400;
 }
-
+.right{
+  float: right;
+}
+.full-width{
+  width:100%;
+}
 #toast-container {
   left: 50%;
   transform: translateX(-50%);

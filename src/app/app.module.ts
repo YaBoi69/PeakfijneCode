@@ -1,10 +1,12 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {MainpageComponent} from './components/mainpage/mainpage.component';
 import {ProfilepageComponent} from './components/profilepage/profilepage.component';
+import { ChangePasswordDialogComponent } from './components/profilepage/change-password-dialog/change-password-dialog.component';
 import { SettingspageComponent } from './components/admin/settingspage/settingspage.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Angular Material Components
@@ -38,6 +40,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { DeleteProfileDialogComponent } from './components/profilepage/delete-profile-dialog/delete-profile-dialog.component';
+
 
 
 @NgModule({
@@ -45,10 +49,13 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     AppComponent,
     MainpageComponent,
     ProfilepageComponent,
-    SettingspageComponent
+    SettingspageComponent,
+    ChangePasswordDialogComponent,
+    DeleteProfileDialogComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
@@ -84,7 +91,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatPaginatorModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ChangePasswordDialogComponent,
+  DeleteProfileDialogComponent]
 })
 export class AppModule {
 }

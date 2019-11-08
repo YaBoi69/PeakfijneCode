@@ -6,3 +6,20 @@
 .image{
   border-radius: 50%;
 }
+.container{
+  padding-top: 20px;
+  width: 60%;
+  margin: auto;
+}
+@media screen and (max-width: 600px) {
+  .container {
+    padding-top: 20px;
+    width: 90%;
+    margin: auto;
+  }
+}
+.error-message{
+  color: red;
+  font-size: small;
+  margin-bottom: 20px;
+}
