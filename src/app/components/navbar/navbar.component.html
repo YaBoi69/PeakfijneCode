@@ -1,0 +1,17 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+
+  <mat-sidenav-container class="example-sidenav-container">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <mat-nav-list>
+        <button type="button" mat-button>Admin</button>
+        <p>
+          <button type="button" mat-button>Profile settings</button>
+        <p>
+          <button type="button" mat-button>Help</button>
+        <p>
+          <button type="button" mat-button>About us</button>
+      </mat-nav-list>
+    </mat-sidenav>
+  </mat-sidenav-container>
