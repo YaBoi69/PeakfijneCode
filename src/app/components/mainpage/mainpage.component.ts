@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {SessionService} from "../../services/session.service";
 
 declare let L;
 declare let M;
@@ -17,12 +18,15 @@ export class MainpageComponent implements OnInit {
   private markers: any[];
   private map: any;
 
-  constructor() {
+  constructor(private sessionService: SessionService) {
     this.markers = [
       L.marker([52.359419717009594, 4.909416979785766]),
       L.marker([52.35760012645642, 4.908305800852419]),
       L.marker([52.35804757370319, 4.9146431839996385])
     ];
+
+    console.log('component test');
+    console.log(sessionService.getRepository().getAll());
 
   }
 
