@@ -41,6 +41,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { DeleteProfileDialogComponent } from './components/profilepage/delete-profile-dialog/delete-profile-dialog.component';
+import { CreatePostDialogComponent } from './components/mainpage/create-post-dialog/create-post-dialog.component';
 
 
 
@@ -51,7 +52,8 @@ import { DeleteProfileDialogComponent } from './components/profilepage/delete-pr
     ProfilepageComponent,
     SettingspageComponent,
     ChangePasswordDialogComponent,
-    DeleteProfileDialogComponent
+    DeleteProfileDialogComponent,
+    CreatePostDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -92,8 +94,11 @@ import { DeleteProfileDialogComponent } from './components/profilepage/delete-pr
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ChangePasswordDialogComponent,
-  DeleteProfileDialogComponent]
+  entryComponents: [
+    ChangePasswordDialogComponent,
+    DeleteProfileDialogComponent,
+    CreatePostDialogComponent
+  ]
 })
 export class AppModule {
 }
