@@ -1,10 +1,11 @@
+import {Gps} from "./gps";
+
 let lastId: number = 0;
 
 export class Post {
   id: number;
   message: string;
-  latitude: number;
-  longitude: number;
+  latlng: Gps;
   attachmentPath: string;
   views: number;
   createdAt: Date;
@@ -22,8 +23,7 @@ export class Post {
   constructor(message: string, latitude: number, longitude: number, attachmentPath?: string){
     this.id = lastId++;
     this.message = message;
-    this.latitude = latitude;
-    this.longitude = longitude;
+    this.latlng = new Gps(latitude, longitude);
     this.attachmentPath = attachmentPath;
     this.views = 0;
     this.createdAt = new Date();

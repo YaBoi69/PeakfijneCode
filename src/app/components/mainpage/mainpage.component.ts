@@ -3,6 +3,7 @@ import {SessionService} from "../../services/session.service";
 import {MatDialog} from "@angular/material/dialog";
 import {CreatePostDialogComponent} from "./create-post-dialog/create-post-dialog.component";
 import {ChangePasswordDialogComponent} from "../profilepage/change-password-dialog/change-password-dialog.component";
+import {Gps} from "../../model/gps";
 
 declare let L;
 declare let M;
@@ -14,12 +15,12 @@ declare let M;
   styleUrls: ['./mainpage.component.scss']
 })
 export class MainpageComponent implements OnInit {
-  readonly UNABLE_TO_GET_PRECISE_LOCATION = "Unable to get precise location. Location may not be accurate.";
-  readonly INACCURATE_START_RADIUS = 15;
-  readonly TOAST_DURATION = 10000;
+  private readonly INACCURATE_START_RADIUS: number = 15;
+  private readonly DIALOG_WIDTH: string = "600px";
   private circle: any;
   private markers: any[];
   private map: any;
+  private gpsCoordinates: Gps;
 
   constructor(
     private sessionService: SessionService,
@@ -34,15 +35,15 @@ export class MainpageComponent implements OnInit {
     console.log(sessionService.getRepository().getAll());
 
   }
-  openPasswordDialog(): void {
-    const dialogRef = this.dialog.open(CreatePostDialogComponent, {
-      width: '600px'
-    });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('The dialog was closed');
-    //   // this.animal = result;
-    // });
+  openCreatePostDialog(): void {
+    // Only allow the user to create a new post if we got its gps coordinates
+    if(this.gpsCoordinates != null){
+      const dialogRef = this.dialog.open(CreatePostDialogComponent, {
+        width: this.DIALOG_WIDTH,
+        data: this.gpsCoordinates
+      });
+    }
   }
 
   ngOnInit() {
@@ -97,6 +98,8 @@ export class MainpageComponent implements OnInit {
       } else {
         this.circle.setLatLng(e.latlng);
       }
+
+      this.gpsCoordinates = new Gps(e.latlng.lat, e.latlng.lng);
     });
 
     this.map.locate({setView: true, watch: true, maxZoom: MAX_ZOOM_LEVEL});
