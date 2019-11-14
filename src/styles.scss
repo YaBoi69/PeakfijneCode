@@ -111,3 +111,8 @@ i.medium {
 .btn-previous-page {
   padding: 15px 7px 0 7px;
 }
+
+/* Input fields should use the width of their parent elements (columns) */
+.mat-form-field {
+  width: 100%;
+}
