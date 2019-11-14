@@ -9,6 +9,7 @@ import {ProfilepageComponent} from './components/profilepage/profilepage.compone
 import { ChangePasswordDialogComponent } from './components/profilepage/change-password-dialog/change-password-dialog.component';
 import { SettingspageComponent } from './components/admin/settingspage/settingspage.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {HttpClientModule} from "@angular/common/http";
 // Angular Material Components
 import {MatCheckboxModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material';
@@ -42,6 +43,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { DeleteProfileDialogComponent } from './components/profilepage/delete-profile-dialog/delete-profile-dialog.component';
 import { CreatePostDialogComponent } from './components/mainpage/create-post-dialog/create-post-dialog.component';
+import { ProfileSettingsDialogComponent } from './components/profilepage/profile-settings-dialog/profile-settings-dialog.component';
 
 
 
@@ -53,9 +55,11 @@ import { CreatePostDialogComponent } from './components/mainpage/create-post-dia
     SettingspageComponent,
     ChangePasswordDialogComponent,
     DeleteProfileDialogComponent,
+    ProfileSettingsDialogComponent,
     CreatePostDialogComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     FormsModule,
     AppRoutingModule,
@@ -97,7 +101,8 @@ import { CreatePostDialogComponent } from './components/mainpage/create-post-dia
   entryComponents: [
     ChangePasswordDialogComponent,
     DeleteProfileDialogComponent,
-    CreatePostDialogComponent
+    CreatePostDialogComponent,
+    ProfileSettingsDialogComponent
   ]
 })
 export class AppModule {

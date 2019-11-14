@@ -6,12 +6,17 @@ import {MatDialogRef} from "@angular/material";
   templateUrl: './delete-profile-dialog.component.html',
   styleUrls: ['./delete-profile-dialog.component.scss']
 })
-export class DeleteProfileDialogComponent {
-
+export class DeleteProfileDialogComponent implements OnInit{
+  private nickName: string;
+  private nickNameCheck: string;
+  private deleteCheckBox: boolean;
   constructor(public dialogRef: MatDialogRef<DeleteProfileDialogComponent>) {}
 
   onNoClick(): void {
     this.dialogRef.close();
   }
-
+  ngOnInit() {
+    this.nickNameCheck = "Niels";
+    this.deleteCheckBox = false;
+  }
 }

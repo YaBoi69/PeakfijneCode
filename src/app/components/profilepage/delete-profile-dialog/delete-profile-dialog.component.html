@@ -1,5 +1,14 @@
 <h4>Delete Account</h4>
-<p>Are you sure you want to delete your account?</p>
+
+<form>
+  <p>Type your nickname to confirm</p>
+  <mat-form-field class="full-width">
+
+    <input matInput placeholder="Nickname" name="nickname" #nickname="ngModel" [(ngModel)]="nickName">
+  </mat-form-field>
+</form>
+<p class="full-width"><mat-checkbox [(ngModel)]="deleteCheckBox">Are you sure you want to delete your account?</mat-checkbox></p>
+
 <button mat-button (click)="onNoClick()">Cancel</button>
-<button mat-raised-button color="warn" class="right">Delete Account</button>
+<button mat-raised-button color="warn" class="right" [disabled]="nickName != nickNameCheck || deleteCheckBox == false">Delete Account</button>
 
