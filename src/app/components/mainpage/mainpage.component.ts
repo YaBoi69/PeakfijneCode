@@ -38,10 +38,10 @@ export class MainpageComponent implements OnInit {
 
   openCreatePostDialog(): void {
     // Only allow the user to create a new post if we got its gps coordinates
-    if(this.gpsCoordinates != null){
+    if (this.gpsCoordinates != null) {
       const dialogRef = this.dialog.open(CreatePostDialogComponent, {
         width: this.DIALOG_WIDTH,
-        data: this.gpsCoordinates
+        data: {coordinates: this.gpsCoordinates, map: this.map}
       });
     }
   }
