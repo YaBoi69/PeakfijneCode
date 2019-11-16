@@ -6,6 +6,7 @@ $pulse-color-on: rgba(53, 81, 181, 0.95);
 $pulse-color-off: rgba(53, 81, 181, 0);
 $pulse-iteration-count: 20;
 $pulse-shadow-width: 10px;
+$mat-primary-color: #3f51b5;
 $mat-border-radius: 4px;
 $leaflet-action-element-padding: 8px 8px 0 0;
 
@@ -149,10 +150,6 @@ i.medium {
 /* Input fields should use the width of their parent elements (columns) */
 .mat-form-field {
   width: 100%;
-}
-
-.swing:hover {
-  animation: jump 1s 2s forwards cubic-bezier(.84, -0.54, .31, 1.19);
 }
 
 .pulse {
