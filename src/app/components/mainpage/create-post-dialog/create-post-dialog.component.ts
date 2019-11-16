@@ -34,7 +34,6 @@ export class CreatePostDialogComponent implements OnInit {
 
   onCreate() {
     let marker = L.marker([this.gpsCoordinates.latitude, this.gpsCoordinates.longitude]);
-    console.log(this.postContent);
     let popup = marker.bindPopup(this.postContent);
 
     popup.addTo(this.map).addEventListener('click', () => {

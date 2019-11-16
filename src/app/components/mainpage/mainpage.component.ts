@@ -4,6 +4,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {CreatePostDialogComponent} from "./create-post-dialog/create-post-dialog.component";
 import {ChangePasswordDialogComponent} from "../profilepage/change-password-dialog/change-password-dialog.component";
 import {Gps} from "../../model/gps";
+import {ShowInformationDialogComponent} from "./show-information-dialog/show-information-dialog.component";
 
 declare let L;
 declare let M;
@@ -44,6 +45,12 @@ export class MainpageComponent implements OnInit {
         data: {coordinates: this.gpsCoordinates, map: this.map}
       });
     }
+  }
+
+  openShowInformationDialog() {
+    this.dialog.open(ShowInformationDialogComponent, {
+      width: this.DIALOG_WIDTH
+    });
   }
 
   ngOnInit() {
@@ -113,6 +120,4 @@ export class MainpageComponent implements OnInit {
   private onLocationError(e): void {
     alert(e.message);
   }
-
-
 }
