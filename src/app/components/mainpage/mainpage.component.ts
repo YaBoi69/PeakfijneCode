@@ -4,6 +4,8 @@ import {MatDialog} from "@angular/material/dialog";
 import {CreatePostDialogComponent} from "./create-post-dialog/create-post-dialog.component";
 import {ChangePasswordDialogComponent} from "../profilepage/change-password-dialog/change-password-dialog.component";
 import {Gps} from "../../model/gps";
+import {ShowInformationDialogComponent} from "./show-information-dialog/show-information-dialog.component";
+import {Post} from "../../model/post";
 
 declare let L;
 declare let M;
@@ -18,22 +20,14 @@ export class MainpageComponent implements OnInit {
   private readonly INACCURATE_START_RADIUS: number = 15;
   private readonly DIALOG_WIDTH: string = "600px";
   private circle: any;
-  private markers: any[];
+  private posts: Post[];
   private map: any;
   private gpsCoordinates: Gps;
 
   constructor(
     private sessionService: SessionService,
     public dialog: MatDialog) {
-    this.markers = [
-      L.marker([52.359419717009594, 4.909416979785766]),
-      L.marker([52.35760012645642, 4.908305800852419]),
-      L.marker([52.35804757370319, 4.9146431839996385])
-    ];
-
-    console.log('component test');
-    console.log(sessionService.getRepository().getAll());
-
+    this.posts = sessionService.getRepository().getAll();
   }
 
   openCreatePostDialog(): void {
@@ -46,12 +40,24 @@ export class MainpageComponent implements OnInit {
     }
   }
 
+  openShowInformationDialog() {
+    this.dialog.open(ShowInformationDialogComponent, {
+      width: this.DIALOG_WIDTH
+    });
+  }
+
   ngOnInit() {
 
     const DEFAULT_LAT = 52.36015051507675;
     const DEFAULT_LONG = 4.908598859032622;
     const DEFAULT_ZOOM_LEVEL = 16;
     const MAX_ZOOM_LEVEL = 19;
+    const communityCreatedPostIcon = L.icon({
+      iconUrl: 'assets/img/community-created-post.png',
+      iconSize: [48, 48],
+      iconAnchor: [10, 46],
+      popupAnchor: [0, -48],
+    });
 
     this.map = new L.map('map', {
       zoomControl: false
@@ -66,9 +72,12 @@ export class MainpageComponent implements OnInit {
       position: 'bottomleft'
     }).addTo(this.map);
 
-    for (let marker of this.markers) {
-      console.log(marker);
-      marker.addTo(this.map).addEventListener('click', () => {
+    //TODO: Assign the right icon to each marker by looking at the created by attribute of each post
+    for (let post of this.posts) {
+      let marker = L.marker([post.latlng.latitude, post.latlng.longitude], {icon: communityCreatedPostIcon});
+      let popup = marker.bindPopup(post.message);
+
+      popup.addTo(this.map).addEventListener('click', () => {
         console.log('test');
       });
     }
@@ -113,6 +122,4 @@ export class MainpageComponent implements OnInit {
   private onLocationError(e): void {
     alert(e.message);
   }
-
-
 }

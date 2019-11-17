@@ -2,6 +2,8 @@ import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Gps} from "../../../model/gps";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Post} from "../../../model/post";
+import {SessionService} from "../../../services/session.service";
 
 declare let L;
 
@@ -13,11 +15,18 @@ declare let L;
 export class CreatePostDialogComponent implements OnInit {
   private readonly POST_SUCCESSFULLY_CREATED = "Your post is successfully created 🎉";
   private readonly SNACKBAR_DURATION = 5000;
+  private readonly USER_CREATED_POST_ICON = L.icon({
+    iconUrl: 'assets/img/user-created-post.png',
+    iconSize: [48, 48],
+    iconAnchor: [10, 46],
+    popupAnchor: [0, -48],
+  });
   private gpsCoordinates:Gps;
   private map: any;
   private postContent: string;
 
   constructor(
+    private sessionService: SessionService,
     public dialogRef: MatDialogRef<CreatePostDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: {coordinates: Gps, map: any},
     private _snackBar: MatSnackBar) {
@@ -33,9 +42,11 @@ export class CreatePostDialogComponent implements OnInit {
   }
 
   onCreate() {
-    let marker = L.marker([this.gpsCoordinates.latitude, this.gpsCoordinates.longitude]);
-    console.log(this.postContent);
-    let popup = marker.bindPopup(this.postContent);
+    let post:Post = new Post(this.postContent, this.gpsCoordinates.latitude, this.gpsCoordinates.longitude);
+    this.sessionService.getRepository().add(post);
+
+    let marker = L.marker([post.latlng.latitude, post.latlng.longitude], {icon: this.USER_CREATED_POST_ICON});
+    let popup = marker.bindPopup(post.message);
 
     popup.addTo(this.map).addEventListener('click', () => {
       console.log('test');

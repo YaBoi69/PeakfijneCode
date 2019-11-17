@@ -44,6 +44,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { DeleteProfileDialogComponent } from './components/profilepage/delete-profile-dialog/delete-profile-dialog.component';
 import { CreatePostDialogComponent } from './components/mainpage/create-post-dialog/create-post-dialog.component';
 import { ProfileSettingsDialogComponent } from './components/profilepage/profile-settings-dialog/profile-settings-dialog.component';
+import { ShowInformationDialogComponent } from './components/mainpage/show-information-dialog/show-information-dialog.component';
 
 
 
@@ -56,7 +57,8 @@ import { ProfileSettingsDialogComponent } from './components/profilepage/profile
     ChangePasswordDialogComponent,
     DeleteProfileDialogComponent,
     ProfileSettingsDialogComponent,
-    CreatePostDialogComponent
+    CreatePostDialogComponent,
+    ShowInformationDialogComponent
   ],
   imports: [
     HttpClientModule,
@@ -102,7 +104,8 @@ import { ProfileSettingsDialogComponent } from './components/profilepage/profile
     ChangePasswordDialogComponent,
     DeleteProfileDialogComponent,
     CreatePostDialogComponent,
-    ProfileSettingsDialogComponent
+    ProfileSettingsDialogComponent,
+    ShowInformationDialogComponent
   ]
 })
 export class AppModule {
