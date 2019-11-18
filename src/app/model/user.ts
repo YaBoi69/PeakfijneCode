@@ -1,5 +1,3 @@
-import {Post} from '../post';
-
 export class User {
   static idCounter: number;
   id: number;
