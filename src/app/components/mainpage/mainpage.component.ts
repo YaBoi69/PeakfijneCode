@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {SessionService} from "../../services/session.service";
-import {MatDialog} from "@angular/material/dialog";
-import {CreatePostDialogComponent} from "./create-post-dialog/create-post-dialog.component";
-import {ChangePasswordDialogComponent} from "../profilepage/change-password-dialog/change-password-dialog.component";
-import {Gps} from "../../model/gps";
-import {ShowInformationDialogComponent} from "./show-information-dialog/show-information-dialog.component";
-import {Post} from "../../model/post";
+import {SessionService} from '../../services/session.service';
+import {MatDialog} from '@angular/material/dialog';
+import {CreatePostDialogComponent} from './create-post-dialog/create-post-dialog.component';
+import {ChangePasswordDialogComponent} from '../profilepage/change-password-dialog/change-password-dialog.component';
+import {Gps} from '../../model/gps';
+import {ShowInformationDialogComponent} from './show-information-dialog/show-information-dialog.component';
+import {Post} from '../../model/post';
+import {PointsService} from "../../services/points.service";
 
 declare let L;
 declare let M;
@@ -18,7 +19,7 @@ declare let M;
 })
 export class MainpageComponent implements OnInit {
   private readonly INACCURATE_START_RADIUS: number = 15;
-  private readonly DIALOG_WIDTH: string = "600px";
+  private readonly DIALOG_WIDTH: string = '600px';
   private circle: any;
   private posts: Post[];
   private map: any;
@@ -26,6 +27,7 @@ export class MainpageComponent implements OnInit {
 
   constructor(
     private sessionService: SessionService,
+    private pointsService: PointsService,
     public dialog: MatDialog) {
     this.posts = sessionService.getRepository().getAll();
   }
@@ -72,13 +74,15 @@ export class MainpageComponent implements OnInit {
       position: 'bottomleft'
     }).addTo(this.map);
 
-    //TODO: Assign the right icon to each marker by looking at the created by attribute of each post
-    for (let post of this.posts) {
-      let marker = L.marker([post.latlng.latitude, post.latlng.longitude], {icon: communityCreatedPostIcon});
-      let popup = marker.bindPopup(post.message);
+    // TODO: Assign the right icon to each marker by looking at the created by attribute of each post
+    for (const post of this.posts) {
+      const marker = L.marker([post.latlng.latitude, post.latlng.longitude], {icon: communityCreatedPostIcon});
+      const popup = marker.bindPopup(post.message);
 
       popup.addTo(this.map).addEventListener('click', () => {
         console.log('test');
+        this.pointsService.postAddView(post);
+        console.log(post.getViews());
       });
     }
 
@@ -122,4 +126,5 @@ export class MainpageComponent implements OnInit {
   private onLocationError(e): void {
     alert(e.message);
   }
+
 }

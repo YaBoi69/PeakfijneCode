@@ -48,4 +48,12 @@ export class User {
   unAdmin() {
     this.isAdmin = false;
   }
+
+  givePoints(points: number) {
+    this.totalPoints += points;
+  }
+
+  getPoints() {
+    return this.totalPoints;
+  }
 }
