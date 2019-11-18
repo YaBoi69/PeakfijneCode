@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
-import {BaseService} from "./base.service";
-import {Post} from "../../model/post";
+import {Injectable} from '@angular/core';
+import {BaseService} from './base.service';
+import {Post} from '../../model/post';
+import {User} from '../../model/user';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SimulationService implements BaseService{
+export class SimulationService implements BaseService {
   private posts: Post[];
 
   /**
@@ -14,14 +15,13 @@ export class SimulationService implements BaseService{
   constructor() {
     this.posts = [];
 
-    let testPosts = [
-      new Post("Lorem ipsum", 52.359419717009594, 4.909416979785766),
-      new Post("Dolor sit", 52.35760012645642, 4.908305800852419),
-      new Post("Amet", 52.35804757370319, 4.9146431839996385)
+    const testPosts = [
+      new Post(1, 'Lorem ipsum', 52.359419717009594, 4.909416979785766),
+      new Post(2, 'Dolor sit', 52.35760012645642, 4.908305800852419),
+      new Post(3, 'Amet', 52.35804757370319, 4.9146431839996385)
     ];
 
-    // Now that we prepared some test data, put it inside the posts array
-    for(let post of testPosts){
+    for (const post of testPosts) {
       this.posts.push(post);
     }
   }
@@ -50,7 +50,7 @@ export class SimulationService implements BaseService{
   remove(index: number): Post {
 
     // Make sure the requested index exists
-    if(index < this.posts.length){
+    if (index < this.posts.length) {
       this.posts[index].isActive = false;
 
       return this.posts[index];
@@ -68,9 +68,8 @@ export class SimulationService implements BaseService{
   update(index: number, post: Post): void {
 
     // Make sure the requested index exists
-    if(index < this.posts.length){
+    if (index < this.posts.length) {
       this.posts[index] = post;
     }
   }
-
 }

@@ -32,15 +32,19 @@ export class User {
       this.id = User.idCounter;
     }
   }
+
   deactivateUser() {
     this.isActive = false;
   }
+
   reActivateUser() {
     this.isActive = true;
   }
+
   makeAdmin() {
     this.isAdmin = true;
   }
+
   unAdmin() {
     this.isAdmin = false;
   }
