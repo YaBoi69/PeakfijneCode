@@ -8,11 +8,10 @@ export class Post {
   message: string;
   latlng: Gps;
   attachmentPath: string;
-  //views: number;
+  // views: number;
   createdAt: Date;
-  createdBy: number;
   isActive: boolean;
-  createdById: number;
+  createdBy: User;
   viewed: User[] = [];
 
   /**
@@ -24,16 +23,14 @@ export class Post {
    * @param longitude The post's longitude position
    * @param attachmentPath OPTIONAL: The post's attachment/image
    */
-  constructor(createdById: number, message: string, latitude: number, longitude: number, attachmentPath?: string) {
+  constructor(message: string, latitude: number, longitude: number, attachmentPath?: string) {
     this.id = lastId++;
     this.message = message;
     this.latlng = new Gps(latitude, longitude);
     this.attachmentPath = attachmentPath;
-    //this.views = 0;
+    // this.views = 0;
     this.createdAt = new Date();
-    this.createdBy = 1;
     this.isActive = true;
-    this.createdById = createdById;
   }
 
   addView(user: User) {

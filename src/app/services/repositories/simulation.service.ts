@@ -16,9 +16,9 @@ export class SimulationService implements BaseService {
     this.posts = [];
 
     const testPosts = [
-      new Post(1, 'Lorem ipsum', 52.359419717009594, 4.909416979785766),
-      new Post(2, 'Dolor sit', 52.35760012645642, 4.908305800852419),
-      new Post(3, 'Amet', 52.35804757370319, 4.9146431839996385)
+      new Post('Lorem ipsum', 52.359419717009594, 4.909416979785766),
+      new Post('Dolor sit', 52.35760012645642, 4.908305800852419),
+      new Post('Amet', 52.35804757370319, 4.9146431839996385)
     ];
 
     for (const post of testPosts) {
