@@ -9,7 +9,7 @@ import {User} from '../model/user';
   providedIn: 'root'
 })
 export class SessionService {
-  public currentUser: User;
+  public static currentUser: User;
 
   /**
    * Makes sure there's a data source available for the application.

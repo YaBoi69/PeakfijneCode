@@ -6,7 +6,7 @@ import {ChangePasswordDialogComponent} from '../profilepage/change-password-dial
 import {Gps} from '../../model/gps';
 import {ShowInformationDialogComponent} from './show-information-dialog/show-information-dialog.component';
 import {Post} from '../../model/post';
-import {PointsService} from "../../services/points.service";
+import {PointsService} from '../../services/points.service';
 
 declare let L;
 declare let M;
