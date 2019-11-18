@@ -9,7 +9,7 @@ describe('SimulationService', () => {
 
   beforeEach(() =>
     service = TestBed.get(SimulationService)
-  )
+  );
 
   it('should be created', () => {
     // const service: SimulationService = TestBed.get(SimulationService);
