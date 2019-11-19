@@ -32,7 +32,7 @@ export class Post {
     // this.views = 0;
     this.createdAt = new Date();
     this.isActive = true;
-    this.createdBy = SessionService.currentUser;
+    //this.createdBy = sessionService.currentUser;
   }
 
   addView(user: User) {

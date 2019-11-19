@@ -8,6 +8,8 @@ import {ShowInformationDialogComponent} from './show-information-dialog/show-inf
 import {Post} from '../../model/post';
 import {PointsService} from '../../services/points.service';
 import {LoginOrRegisterDialogComponent} from "./login-or-register-dialog/login-or-register-dialog.component";
+import {User} from "../../model/user";
+import {Observable} from "rxjs";
 
 declare let L;
 declare let M;
@@ -25,12 +27,14 @@ export class MainpageComponent implements OnInit {
   private posts: Post[];
   private map: any;
   private gpsCoordinates: Gps;
+  private currentUser: User;
 
   constructor(
     private sessionService: SessionService,
     private pointsService: PointsService,
     public dialog: MatDialog) {
     this.posts = sessionService.getRepository().getAll();
+    sessionService.currentUser.subscribe(currentUser => this.currentUser = currentUser);
   }
 
   openCreatePostDialog(): void {
@@ -132,5 +136,7 @@ export class MainpageComponent implements OnInit {
   private onLocationError(e): void {
     alert(e.message);
   }
-
+  private signOff(){
+    this.sessionService.signOff();
+  }
 }

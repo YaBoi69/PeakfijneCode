@@ -11,11 +11,14 @@
   <!--  <a class="btn-large waves-effect waves-ligh modal-trigger" data-target="signin">-->
   <!--    Sign in-->
   <!--  </a>-->
-  <button (click)="openSignInDialog()" mat-raised-button >Sign in</button>
-  <a routerLink="/profile" mat-fab color="primary">
+  <button (click)="openSignInDialog()" *ngIf="currentUser == null"  mat-raised-button >Sign in</button>
+  <button mat-raised-button  *ngIf="currentUser != null" (click)="signOff()">Sign Out</button>
+  <a routerLink="/profile" *ngIf="currentUser != null" mat-fab color="primary">
     <i class="large material-icons">account_circle</i>
   </a>
+
 </div>
+
 
 <!--<a class="btn-floating btn-flat  btn-fixed btn-top-left btn-large waves-effect waves-light sidenav-trigger"-->
 <!--   data-target="slide-out">-->

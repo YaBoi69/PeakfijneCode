@@ -19,5 +19,6 @@ export class ProfileSettingsDialogComponent implements OnInit {
     const dialogRef = this.dialog.open(DeleteProfileDialogComponent, {
       width: '600px'
     });
+    this.dialogRef.close();
   }
 }
