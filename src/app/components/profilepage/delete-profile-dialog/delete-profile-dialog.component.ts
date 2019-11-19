@@ -8,10 +8,10 @@ import {SessionService} from '../../../services/session.service';
   styleUrls: ['./delete-profile-dialog.component.scss']
 })
 export class DeleteProfileDialogComponent implements OnInit {
-  private nickName: string;
-  private nickNameCheck: string;
+  private password: string;
+  private passwordCheck: string;
   private deleteCheckBox: boolean;
-
+  hide = true;
   constructor(public dialogRef: MatDialogRef<DeleteProfileDialogComponent>) {
   }
 
@@ -20,13 +20,13 @@ export class DeleteProfileDialogComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.nickNameCheck = 'Niels';
+    this.passwordCheck = SessionService.currentUser.getPassword();
     this.deleteCheckBox = false;
   }
 
   deleteProfile() {
     if (SessionService.currentUser) {
-      SessionService.currentUser.deactivateUser();
+        SessionService.currentUser.deactivateUser();
     }
   }
 }
