@@ -45,6 +45,7 @@ import { DeleteProfileDialogComponent } from './components/profilepage/delete-pr
 import { CreatePostDialogComponent } from './components/mainpage/create-post-dialog/create-post-dialog.component';
 import { ProfileSettingsDialogComponent } from './components/profilepage/profile-settings-dialog/profile-settings-dialog.component';
 import { ShowInformationDialogComponent } from './components/mainpage/show-information-dialog/show-information-dialog.component';
+import {NavbarComponent} from "./components/navbar/navbar.component";
 
 
 
@@ -58,7 +59,8 @@ import { ShowInformationDialogComponent } from './components/mainpage/show-infor
     DeleteProfileDialogComponent,
     ProfileSettingsDialogComponent,
     CreatePostDialogComponent,
-    ShowInformationDialogComponent
+    ShowInformationDialogComponent,
+    NavbarComponent
   ],
   imports: [
     HttpClientModule,

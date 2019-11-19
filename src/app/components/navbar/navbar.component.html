@@ -1,17 +1,43 @@
-<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
-  <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+<!--<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">-->
+<!--&lt;!&ndash;  <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>&ndash;&gt;-->
+<!--  <div class="btn-group vertical btn-fixed btn-top-left">-->
+<!--    <button mat-raised-button (click)="snav.toggle()"><mat-icon>settings_application</mat-icon></button>-->
+<!--  </div>-->
 
-  <mat-sidenav-container class="example-sidenav-container">
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
-                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
-      <mat-nav-list>
-        <button type="button" mat-button>Admin</button>
-        <p>
-          <button type="button" mat-button>Profile settings</button>
-        <p>
-          <button type="button" mat-button>Help</button>
-        <p>
-          <button type="button" mat-button>About us</button>
-      </mat-nav-list>
-    </mat-sidenav>
-  </mat-sidenav-container>
+<!--  <mat-sidenav-container class="example-sidenav-container">-->
+<!--    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"-->
+<!--                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">-->
+<!--      <mat-nav-list>-->
+<!--        <button type="button" mat-button>Admin</button>-->
+<!--        <p>-->
+<!--          <button type="button" mat-button>Profile settings</button>-->
+<!--        <p>-->
+<!--          <button type="button" mat-button>Help</button>-->
+<!--        <p>-->
+<!--          <button type="button" mat-button>About us</button>-->
+<!--      </mat-nav-list>-->
+<!--    </mat-sidenav>-->
+<!--  </mat-sidenav-container>-->
+
+
+
+
+
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <mat-nav-list>
+      <h4>Administration</h4>
+      <a mat-list-item href="#">Messages</a>
+      <a mat-list-item href="#">Reports</a>
+      <a mat-list-item href="#">Users</a>
+      <a mat-list-item href="#">Settings</a>
+    </mat-nav-list>
+  </mat-drawer>
+
+
+
+</mat-drawer-container>
+
+<div class="btn-group vertical btn-fixed btn-top-left stand-alone">
+  <button mat-raised-button (click)="drawer.toggle()"><mat-icon>settings_application</mat-icon></button>
+</div>

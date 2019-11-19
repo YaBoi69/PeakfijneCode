@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 $button-spacing: 23px;
 $btn-group-item-space: 10px;
-$ui-elements-z-index: 400;
+$ui-elements-z-index: 1001;
 $pulse-color-on: rgba(53, 81, 181, 0.95);
 $pulse-color-off: rgba(53, 81, 181, 0);
 $pulse-iteration-count: 20;
@@ -98,8 +98,6 @@ i.medium {
 .btn-top-left {
   top: $button-spacing;
   left: $button-spacing;
-  right: 0;
-  bottom: 0;
 }
 
 .btn-bottom-right {
@@ -110,6 +108,10 @@ i.medium {
 .btn-bottom-left {
   bottom: $button-spacing;
   left: $button-spacing;
+}
+
+.btn-fixed.stand-alone > * {
+  margin: 0 !important;
 }
 
 /* Leaflet maps override */
@@ -150,6 +152,10 @@ i.medium {
 /* Input fields should use the width of their parent elements (columns) */
 .mat-form-field {
   width: 100%;
+}
+
+.mat-drawer-container {
+  background-color: transparent;
 }
 
 .pulse {
