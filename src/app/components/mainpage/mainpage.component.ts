@@ -80,7 +80,6 @@ export class MainpageComponent implements OnInit {
       const popup = marker.bindPopup(post.message);
 
       popup.addTo(this.map).addEventListener('click', () => {
-        console.log('test');
         this.pointsService.postAddView(post);
         console.log(post.getViews());
       });
