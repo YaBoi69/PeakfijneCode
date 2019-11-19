@@ -21,14 +21,14 @@ export class CreatePostDialogComponent implements OnInit {
     iconAnchor: [10, 46],
     popupAnchor: [0, -48],
   });
-  private gpsCoordinates:Gps;
+  private gpsCoordinates: Gps;
   private map: any;
   private postContent: string;
 
   constructor(
     private sessionService: SessionService,
     public dialogRef: MatDialogRef<CreatePostDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: {coordinates: Gps, map: any},
+    @Inject(MAT_DIALOG_DATA) public data: { coordinates: Gps, map: any },
     private _snackBar: MatSnackBar) {
     this.gpsCoordinates = data.coordinates;
     this.map = data.map;
@@ -42,7 +42,7 @@ export class CreatePostDialogComponent implements OnInit {
   }
 
   onCreate() {
-    let post:Post = new Post(this.postContent, this.gpsCoordinates.latitude, this.gpsCoordinates.longitude);
+    let post: Post = new Post(this.postContent, this.gpsCoordinates.latitude, this.gpsCoordinates.longitude);
     this.sessionService.getRepository().add(post);
 
     let marker = L.marker([post.latlng.latitude, post.latlng.longitude], {icon: this.USER_CREATED_POST_ICON});
@@ -57,7 +57,7 @@ export class CreatePostDialogComponent implements OnInit {
     this.resetData();
   }
 
-  resetData(){
+  resetData() {
     this.postContent = null;
     this.gpsCoordinates = null;
   }
