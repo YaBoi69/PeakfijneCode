@@ -60,4 +60,8 @@ export class User {
   getPassword() {
     return this.password;
   }
+
+  getEmail(){
+    return this.email;
+  }
 }

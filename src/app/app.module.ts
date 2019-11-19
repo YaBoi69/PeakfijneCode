@@ -45,6 +45,7 @@ import { DeleteProfileDialogComponent } from './components/profilepage/delete-pr
 import { CreatePostDialogComponent } from './components/mainpage/create-post-dialog/create-post-dialog.component';
 import { ProfileSettingsDialogComponent } from './components/profilepage/profile-settings-dialog/profile-settings-dialog.component';
 import { ShowInformationDialogComponent } from './components/mainpage/show-information-dialog/show-information-dialog.component';
+import {LoginOrRegisterDialogComponent} from "./components/mainpage/login-or-register-dialog/login-or-register-dialog.component";
 
 
 
@@ -58,7 +59,8 @@ import { ShowInformationDialogComponent } from './components/mainpage/show-infor
     DeleteProfileDialogComponent,
     ProfileSettingsDialogComponent,
     CreatePostDialogComponent,
-    ShowInformationDialogComponent
+    ShowInformationDialogComponent,
+    LoginOrRegisterDialogComponent
   ],
   imports: [
     HttpClientModule,
@@ -105,7 +107,8 @@ import { ShowInformationDialogComponent } from './components/mainpage/show-infor
     DeleteProfileDialogComponent,
     CreatePostDialogComponent,
     ProfileSettingsDialogComponent,
-    ShowInformationDialogComponent
+    ShowInformationDialogComponent,
+    LoginOrRegisterDialogComponent
   ]
 })
 export class AppModule {

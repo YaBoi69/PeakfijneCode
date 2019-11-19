@@ -7,6 +7,7 @@ import {Gps} from '../../model/gps';
 import {ShowInformationDialogComponent} from './show-information-dialog/show-information-dialog.component';
 import {Post} from '../../model/post';
 import {PointsService} from '../../services/points.service';
+import {LoginOrRegisterDialogComponent} from "./login-or-register-dialog/login-or-register-dialog.component";
 
 declare let L;
 declare let M;
@@ -47,8 +48,14 @@ export class MainpageComponent implements OnInit {
       width: this.DIALOG_WIDTH
     });
   }
+  openSignInDialog() {
+    this.dialog.open(LoginOrRegisterDialogComponent, {
+      width: this.DIALOG_WIDTH
+    });
+  }
 
-  ngOnInit() {
+
+    ngOnInit() {
 
     const DEFAULT_LAT = 52.36015051507675;
     const DEFAULT_LONG = 4.908598859032622;
