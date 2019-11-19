@@ -12,9 +12,8 @@ export class DeleteProfileDialogComponent implements OnInit {
   private password: string;
   private passwordCheck: string;
   private deleteCheckBox: boolean;
-  private currentUser: User;
   hide = true;
-  constructor(public dialogRef: MatDialogRef<DeleteProfileDialogComponent>, private sessionService: SessionService) {
+  constructor(public dialogRef: MatDialogRef<DeleteProfileDialogComponent>) {
   }
 
   onNoClick(): void {
@@ -22,14 +21,13 @@ export class DeleteProfileDialogComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currentUser = this.sessionService.currentUser;
-    this.passwordCheck = this.currentUser.getPassword();
+    this.passwordCheck = SessionService.currentUser.getPassword();
     this.deleteCheckBox = false;
   }
 
   deleteProfile() {
-    if (this.currentUser) {
-        this.currentUser.deactivateUser();
+    if (SessionService.currentUser) {
+        SessionService.currentUser.deactivateUser();
     }
   }
 }
