@@ -12,7 +12,7 @@ export class DeleteProfileDialogComponent implements OnInit {
   private nickNameCheck: string;
   private deleteCheckBox: boolean;
 
-  constructor(public dialogRef: MatDialogRef<DeleteProfileDialogComponent>, private sessionService: SessionService) {
+  constructor(public dialogRef: MatDialogRef<DeleteProfileDialogComponent>) {
   }
 
   onNoClick(): void {
@@ -25,8 +25,8 @@ export class DeleteProfileDialogComponent implements OnInit {
   }
 
   deleteProfile() {
-    if (this.sessionService.currentUser) {
-        this.sessionService.currentUser.deactivateUser();
+    if (SessionService.currentUser) {
+      SessionService.currentUser.deactivateUser();
     }
-      }
+  }
 }
