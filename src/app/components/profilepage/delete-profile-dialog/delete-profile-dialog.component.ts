@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialogRef} from '@angular/material';
 import {SessionService} from '../../../services/session.service';
+import {User} from "../../../model/user";
 
 @Component({
   selector: 'app-delete-profile-dialog',
@@ -8,11 +9,12 @@ import {SessionService} from '../../../services/session.service';
   styleUrls: ['./delete-profile-dialog.component.scss']
 })
 export class DeleteProfileDialogComponent implements OnInit {
-  private nickName: string;
-  private nickNameCheck: string;
+  private password: string;
+  private passwordCheck: string;
   private deleteCheckBox: boolean;
-
-  constructor(public dialogRef: MatDialogRef<DeleteProfileDialogComponent>) {
+  private currentUser: User;
+  hide = true;
+  constructor(public dialogRef: MatDialogRef<DeleteProfileDialogComponent>, private sessionService: SessionService) {
   }
 
   onNoClick(): void {
@@ -20,13 +22,14 @@ export class DeleteProfileDialogComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.nickNameCheck = 'Niels';
+    this.currentUser = this.sessionService.currentUser;
+    this.passwordCheck = this.currentUser.getPassword();
     this.deleteCheckBox = false;
   }
 
   deleteProfile() {
-    if (SessionService.currentUser) {
-      SessionService.currentUser.deactivateUser();
+    if (this.currentUser) {
+        this.currentUser.deactivateUser();
     }
   }
 }
