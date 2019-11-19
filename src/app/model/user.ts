@@ -56,4 +56,8 @@ export class User {
   getPoints() {
     return this.totalPoints;
   }
+
+  getPassword() {
+    return this.password;
+  }
 }

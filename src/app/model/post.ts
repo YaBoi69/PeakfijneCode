@@ -1,5 +1,6 @@
 import {Gps} from './gps';
 import {User} from './user';
+import {SessionService} from "../services/session.service";
 
 let lastId = 0;
 
@@ -23,7 +24,7 @@ export class Post {
    * @param longitude The post's longitude position
    * @param attachmentPath OPTIONAL: The post's attachment/image
    */
-  constructor(message: string, latitude: number, longitude: number, attachmentPath?: string) {
+  constructor(message: string, latitude: number, longitude: number,attachmentPath?: string) {
     this.id = lastId++;
     this.message = message;
     this.latlng = new Gps(latitude, longitude);
@@ -31,6 +32,7 @@ export class Post {
     // this.views = 0;
     this.createdAt = new Date();
     this.isActive = true;
+    this.createdBy = SessionService.currentUser;
   }
 
   addView(user: User) {

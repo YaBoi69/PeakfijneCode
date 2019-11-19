@@ -4,7 +4,7 @@
   <p>Type your nickname to confirm</p>
   <mat-form-field class="full-width">
 
-    <input matInput placeholder="Nickname" name="nickname" #nickname="ngModel" [(ngModel)]="nickName">
+    <input matInput placeholder="Password" name="password" #password="ngModel" [(ngModel)]="password" [type]="hide ? 'password' : 'text'">
   </mat-form-field>
 </form>
 <p class="full-width">
@@ -13,6 +13,6 @@
 
 <button mat-button (click)="onNoClick()">Cancel</button>
 <button mat-raised-button (click)="deleteProfile()" color="warn" class="right"
-        [disabled]="nickName != nickNameCheck || deleteCheckBox == false">Delete Account
+        [disabled]="password != passwordCheck || deleteCheckBox == false">Delete Account
 </button>
 
