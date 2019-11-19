@@ -1,15 +1,17 @@
-import {Injectable} from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {BaseService} from './repositories/base.service';
 import {SimulationService} from './repositories/simulation.service';
 import {UserSimulationService} from './repositories/user.simulation.service';
 import {UserBaseService} from './repositories/user.base.service';
 import {User} from '../model/user';
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SessionService {
-  public static currentUser: User;
+  currentUser = new EventEmitter<User>();
+  //private currentUser;
   public eMail: string;
   public passWord: string;
   /**
@@ -34,21 +36,31 @@ export class SessionService {
     return this.userRepository;
   }
 
-  signUp(eMail: string, nickName: string, passWord: string) {
-      const user = new User(eMail, passWord, nickName, false);
-      this.userRepository.add(user);
-      SessionService.currentUser = user;
+  signUp(eMail: string, nickName: string, passWord: string): boolean {
+      try{
+        const user = new User(eMail, passWord, nickName, false);
+        this.userRepository.add(user);
+        this.currentUser.emit(user);
+        this.currentUser.subscribe(currentUser => console.log(currentUser));
+      }
+      catch{
+        return false;
+      }
+    return true;
   }
 
-  signIn(eMail: string, passWord: string) {
+  signIn(eMail: string, passWord: string): boolean {
     for (let i = 0; i < this.userRepository.getAll().length; i++) {
       if(this.userRepository.getAll()[i].getPassword() == passWord && this.userRepository.getAll()[i].getEmail() == eMail){
-        SessionService.currentUser = this.userRepository.getAll()[i];
+        this.currentUser.emit(this.userRepository.getAll()[i]);
+        this.currentUser.subscribe(currentUser => console.log(currentUser));
+        return true;
       }
     }
+    return false;
   }
 
   signOff() {
-    SessionService.currentUser = null;
+    this.currentUser.emit(null);
   }
 }

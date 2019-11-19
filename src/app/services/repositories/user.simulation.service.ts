@@ -15,7 +15,7 @@ export class UserSimulationService implements UserBaseService {
     this.users = [];
 
     const testUser = [
-      new User('jandejaap@gmail.com', 'wachtwoord123', 'Jantje', false),
+      new User('nielsbier72@gmail.com', 'wachtwoord123', 'Niels', false),
       new User('jochem_de_gamer@hotmail.nl', 'lotsofcrab66', 'DutchJochemNL', true),
       new User('sannevanbeker@protonmail.co.uk', '22randomwachtwoord11!', 'Schanne', false)
     ];
