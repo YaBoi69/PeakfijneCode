@@ -29,7 +29,7 @@ export class DeleteProfileDialogComponent implements OnInit {
     this.passwordCheck = 'wachtwoord123';
     this.deleteCheckBox = false;
   }
-
+  
   deleteProfile() {
     console.log("waarom delete je account?");
     if (this.sessionService.currentUser != null) {
