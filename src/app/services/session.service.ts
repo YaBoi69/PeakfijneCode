@@ -10,7 +10,8 @@ import {User} from '../model/user';
 })
 export class SessionService {
   public static currentUser: User;
-
+  public eMail: string;
+  public passWord: string;
   /**
    * Makes sure there's a data source available for the application.
    *
@@ -31,5 +32,23 @@ export class SessionService {
 
   public getUserRepository(): UserBaseService {
     return this.userRepository;
+  }
+
+  signUp(eMail: string, nickName: string, passWord: string) {
+      const user = new User(eMail, passWord, nickName, false);
+      this.userRepository.add(user);
+      SessionService.currentUser = user;
+  }
+
+  signIn(eMail: string, passWord: string) {
+    for (let i = 0; i < this.userRepository.getAll().length; i++) {
+      if(this.userRepository.getAll()[i].getPassword() == passWord && this.userRepository.getAll()[i].getEmail() == eMail){
+        SessionService.currentUser = this.userRepository.getAll()[i];
+      }
+    }
+  }
+
+  signOff() {
+    SessionService.currentUser = null;
   }
 }

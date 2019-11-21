@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>Please Login or Register</h2>
+<div class="dialog-container">
+  <mat-tab-group>
+    <mat-tab label="Login">
+      <mat-form-field>
+        <input matInput placeholder="Email" name="email" #email="ngModel" [(ngModel)]="eMail" required email>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Password" name="password" #password="ngModel" [(ngModel)]="passWord"
+               [type]="hide ? 'password' : 'text'">
+        <!--        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">-->
+        <!--          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>-->
+        <!--        </button>-->
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="signIn()">Login</button>
+    </mat-tab>
+    <mat-tab label="Register">
+      <form>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Email" name="email" #email="ngModel" [(ngModel)]="eMail" required email>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Nickname" name="nickname" #nickname="ngModel" [(ngModel)]="nickName" required
+                 minlength="3">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Password" name="password" #password="ngModel" [(ngModel)]="passWord"
+                 [type]="hide ? 'password' : 'text'" required>
+          <!--        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">-->
+          <!--          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>-->
+          <!--        </button>-->
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="signUp()">Register</button>
+      </form>
+    </mat-tab>
+  </mat-tab-group>
+</div>
